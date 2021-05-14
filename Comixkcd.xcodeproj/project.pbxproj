@@ -9,13 +9,20 @@
 /* Begin PBXBuildFile section */
 		E1135DF7264C4A0500486E2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135DF6264C4A0500486E2D /* AppDelegate.swift */; };
 		E1135DF9264C4A0500486E2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135DF8264C4A0500486E2D /* SceneDelegate.swift */; };
-		E1135DFB264C4A0500486E2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135DFA264C4A0500486E2D /* ViewController.swift */; };
 		E1135DFE264C4A0500486E2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1135DFC264C4A0500486E2D /* Main.storyboard */; };
 		E1135E01264C4A0500486E2D /* Comixkcd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1135DFF264C4A0500486E2D /* Comixkcd.xcdatamodeld */; };
 		E1135E03264C4A0700486E2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1135E02264C4A0700486E2D /* Assets.xcassets */; };
 		E1135E06264C4A0700486E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1135E04264C4A0700486E2D /* LaunchScreen.storyboard */; };
 		E1135E11264C4A0800486E2D /* ComixkcdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E10264C4A0800486E2D /* ComixkcdTests.swift */; };
 		E1135E1C264C4A0800486E2D /* ComixkcdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E1B264C4A0800486E2D /* ComixkcdUITests.swift */; };
+		E1135E40264C4CE800486E2D /* ComicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E3F264C4CE800486E2D /* ComicsTableViewController.swift */; };
+		E1135E45264C4CF600486E2D /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E44264C4CF600486E2D /* ComicViewModel.swift */; };
+		E1135E4A264C4D0300486E2D /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E49264C4D0300486E2D /* Comic.swift */; };
+		E1135E4F264C4D1800486E2D /* ComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E4E264C4D1800486E2D /* ComicTableViewCell.swift */; };
+		E1135E54264C4D3E00486E2D /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E53264C4D3E00486E2D /* Typography.swift */; };
+		E1135E5A264C569600486E2D /* BasicStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E59264C569600486E2D /* BasicStorage.swift */; };
+		E1135E6D264C5B9100486E2D /* ComicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E6C264C5B9100486E2D /* ComicService.swift */; };
+		E1135E75264E94B100486E2D /* ComicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E74264E94B100486E2D /* ComicViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +46,6 @@
 		E1135DF3264C4A0500486E2D /* Comixkcd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Comixkcd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1135DF6264C4A0500486E2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1135DF8264C4A0500486E2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E1135DFA264C4A0500486E2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E1135DFD264C4A0500486E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1135E00264C4A0500486E2D /* Comixkcd.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Comixkcd.xcdatamodel; sourceTree = "<group>"; };
 		E1135E02264C4A0700486E2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +57,14 @@
 		E1135E17264C4A0800486E2D /* ComixkcdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComixkcdUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1135E1B264C4A0800486E2D /* ComixkcdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComixkcdUITests.swift; sourceTree = "<group>"; };
 		E1135E1D264C4A0800486E2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1135E3F264C4CE800486E2D /* ComicsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsTableViewController.swift; sourceTree = "<group>"; };
+		E1135E44264C4CF600486E2D /* ComicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
+		E1135E49264C4D0300486E2D /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		E1135E4E264C4D1800486E2D /* ComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
+		E1135E53264C4D3E00486E2D /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		E1135E59264C569600486E2D /* BasicStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStorage.swift; sourceTree = "<group>"; };
+		E1135E6C264C5B9100486E2D /* ComicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicService.swift; sourceTree = "<group>"; };
+		E1135E74264E94B100486E2D /* ComicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +115,16 @@
 		E1135DF5264C4A0500486E2D /* Comixkcd */ = {
 			isa = PBXGroup;
 			children = (
+				E1135DFC264C4A0500486E2D /* Main.storyboard */,
+				E1135E2C264C4C5000486E2D /* Model */,
+				E1135E30264C4C7600486E2D /* View */,
+				E1135E2F264C4C6A00486E2D /* ViewModel */,
+				E1135E2E264C4C5A00486E2D /* Controller */,
+				E1135E2D264C4C5600486E2D /* Service */,
+				E1135E31264C4C8100486E2D /* UI */,
+				E1135E58264C532E00486E2D /* Storage */,
 				E1135DF6264C4A0500486E2D /* AppDelegate.swift */,
 				E1135DF8264C4A0500486E2D /* SceneDelegate.swift */,
-				E1135DFA264C4A0500486E2D /* ViewController.swift */,
-				E1135DFC264C4A0500486E2D /* Main.storyboard */,
 				E1135E02264C4A0700486E2D /* Assets.xcassets */,
 				E1135E04264C4A0700486E2D /* LaunchScreen.storyboard */,
 				E1135E07264C4A0700486E2D /* Info.plist */,
@@ -129,6 +149,63 @@
 				E1135E1D264C4A0800486E2D /* Info.plist */,
 			);
 			path = ComixkcdUITests;
+			sourceTree = "<group>";
+		};
+		E1135E2C264C4C5000486E2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1135E49264C4D0300486E2D /* Comic.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1135E2D264C4C5600486E2D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E1135E6C264C5B9100486E2D /* ComicService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		E1135E2E264C4C5A00486E2D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1135E3F264C4CE800486E2D /* ComicsTableViewController.swift */,
+				E1135E74264E94B100486E2D /* ComicViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E1135E2F264C4C6A00486E2D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1135E44264C4CF600486E2D /* ComicViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1135E30264C4C7600486E2D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1135E4E264C4D1800486E2D /* ComicTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E1135E31264C4C8100486E2D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E1135E53264C4D3E00486E2D /* Typography.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E1135E58264C532E00486E2D /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E1135E59264C569600486E2D /* BasicStorage.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,9 +338,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1135DFB264C4A0500486E2D /* ViewController.swift in Sources */,
+				E1135E54264C4D3E00486E2D /* Typography.swift in Sources */,
 				E1135DF7264C4A0500486E2D /* AppDelegate.swift in Sources */,
+				E1135E4F264C4D1800486E2D /* ComicTableViewCell.swift in Sources */,
+				E1135E4A264C4D0300486E2D /* Comic.swift in Sources */,
+				E1135E6D264C5B9100486E2D /* ComicService.swift in Sources */,
+				E1135E75264E94B100486E2D /* ComicViewController.swift in Sources */,
+				E1135E40264C4CE800486E2D /* ComicsTableViewController.swift in Sources */,
 				E1135DF9264C4A0500486E2D /* SceneDelegate.swift in Sources */,
+				E1135E5A264C569600486E2D /* BasicStorage.swift in Sources */,
+				E1135E45264C4CF600486E2D /* ComicViewModel.swift in Sources */,
 				E1135E01264C4A0500486E2D /* Comixkcd.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
