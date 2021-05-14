@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="1346" y="234"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation View Controller-->
         <scene sceneID="5q3-TW-dbV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lXP-Mt-uDf" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lXP-Mt-uDf" customClass="NavigationViewController" customModule="Comixkcd" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wl4-Aq-5nZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

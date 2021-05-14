@@ -23,6 +23,8 @@
 		E1135E5A264C569600486E2D /* BasicStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E59264C569600486E2D /* BasicStorage.swift */; };
 		E1135E6D264C5B9100486E2D /* ComicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E6C264C5B9100486E2D /* ComicService.swift */; };
 		E1135E75264E94B100486E2D /* ComicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E74264E94B100486E2D /* ComicViewController.swift */; };
+		E1135E8A264EF35800486E2D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E89264EF35800486E2D /* Color.swift */; };
+		E1135E8F264F081200486E2D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E8E264F081200486E2D /* NavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		E1135E59264C569600486E2D /* BasicStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStorage.swift; sourceTree = "<group>"; };
 		E1135E6C264C5B9100486E2D /* ComicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicService.swift; sourceTree = "<group>"; };
 		E1135E74264E94B100486E2D /* ComicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewController.swift; sourceTree = "<group>"; };
+		E1135E89264EF35800486E2D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E1135E8E264F081200486E2D /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,7 @@
 		E1135E2E264C4C5A00486E2D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E1135E8E264F081200486E2D /* NavigationViewController.swift */,
 				E1135E3F264C4CE800486E2D /* ComicsTableViewController.swift */,
 				E1135E74264E94B100486E2D /* ComicViewController.swift */,
 			);
@@ -196,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				E1135E53264C4D3E00486E2D /* Typography.swift */,
+				E1135E89264EF35800486E2D /* Color.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -339,10 +345,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1135E54264C4D3E00486E2D /* Typography.swift in Sources */,
+				E1135E8F264F081200486E2D /* NavigationViewController.swift in Sources */,
 				E1135DF7264C4A0500486E2D /* AppDelegate.swift in Sources */,
 				E1135E4F264C4D1800486E2D /* ComicTableViewCell.swift in Sources */,
 				E1135E4A264C4D0300486E2D /* Comic.swift in Sources */,
 				E1135E6D264C5B9100486E2D /* ComicService.swift in Sources */,
+				E1135E8A264EF35800486E2D /* Color.swift in Sources */,
 				E1135E75264E94B100486E2D /* ComicViewController.swift in Sources */,
 				E1135E40264C4CE800486E2D /* ComicsTableViewController.swift in Sources */,
 				E1135DF9264C4A0500486E2D /* SceneDelegate.swift in Sources */,
