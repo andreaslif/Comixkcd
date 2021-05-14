@@ -35,22 +35,44 @@ class ComicTableViewCell: UITableViewCell {
             }
         }
     }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        
-        // Customize cell
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // Customize cell
+        setupFonts()
+        setupColors()
+        //tweakSubviews()
     }
-
+    
+    // MARK: - UI
+    /*
+    /// Changes dimensions of some subviews, e.g. UILabels.
+    /// - Not doing this in the storyboard allows for easy use of variables.
+    private func tweakSubviews() {
+        
+        
+    }*/
+    
+    private func setupFonts() {
+        
+        self.numberLabel.font = Typography.Font.tableViewMain
+        self.titleLabel.font = Typography.Font.tableViewMain
+        self.dateLabel.font = Typography.Font.tableViewDetailed
+    }
+    
+    private func setupColors() {
+        
+        self.numberLabel.textColor = Color.Font.tableViewMain
+        self.titleLabel.textColor = Color.Font.tableViewMain
+        self.dateLabel.textColor = Color.Font.tableViewDetailed
+        
+        self.unreadIndicator.backgroundColor = Color.Accent.main
+    }
+    
+    // MARK: - Interaction
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
