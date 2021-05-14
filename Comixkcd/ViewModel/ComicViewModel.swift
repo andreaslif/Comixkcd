@@ -29,6 +29,7 @@ struct ComicViewModel {
         self.alternativeCaption = comic.alt
         self.image = imageFrom(imageUrlString: comic.img)
         
+        // TODO: Condition unread if fetching something that's been read before
         self.unread = true
         self.favourited = false
     }
@@ -39,8 +40,22 @@ struct ComicViewModel {
 /// Returns a date from the specified year, month and day as a String. Localization not yet supported.
 private func dateStringFrom(year: String, month: String, day: String) -> String {
     
+    let month = insertLeadingZeroIfNeededFor(monthOrDay: month)
+    let day = insertLeadingZeroIfNeededFor(monthOrDay: day)
+    
     // TODO: Localize date according to users regional settings.
     return "\(year)-\(month)-\(day)"
+}
+
+// TODO: Add test?
+/// Inserts a leading zero for single integer numbers that represents days or months. Can be used to e.g. turn '2021-5-12' into '2021-05-12'.
+private func insertLeadingZeroIfNeededFor(monthOrDay: String) -> String {
+    
+    if monthOrDay.count == 1 {
+        return "0\(monthOrDay)"
+    }
+    
+    return monthOrDay
 }
 
 /// Returns a UIImage from the provided URL string, or nil if one cannot be found.
