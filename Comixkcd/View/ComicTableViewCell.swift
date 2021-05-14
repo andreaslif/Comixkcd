@@ -43,17 +43,9 @@ class ComicTableViewCell: UITableViewCell {
         // Customize cell
         setupFonts()
         setupColors()
-        //tweakSubviews()
     }
     
     // MARK: - UI
-    /*
-    /// Changes dimensions of some subviews, e.g. UILabels.
-    /// - Not doing this in the storyboard allows for easy use of variables.
-    private func tweakSubviews() {
-        
-        
-    }*/
     
     private func setupFonts() {
         

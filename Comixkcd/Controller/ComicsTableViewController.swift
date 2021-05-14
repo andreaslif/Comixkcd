@@ -40,7 +40,6 @@ class ComicsTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ComicTableViewCell
         let comicViewModel = comicViewModels[indexPath.row]
-        print("from vc: \(comicViewModel)")
         cell.comicViewModel = comicViewModel
         
         return cell
