@@ -32,19 +32,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubP-OO-SG6">
-                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="42" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1t-DI-muQ">
-                                            <rect key="frame" x="20" y="68" width="42" height="21"/>
+                                            <rect key="frame" x="20" y="50" width="42" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NWH-aE-kZc">
-                                            <rect key="frame" x="102" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="102" y="11" width="42" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -65,8 +65,11 @@
                                         <constraint firstItem="c1t-DI-muQ" firstAttribute="leading" secondItem="E7b-z2-8tr" secondAttribute="trailing" constant="16" id="I7e-Dk-KuM"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="c1t-DI-muQ" secondAttribute="bottom" id="MEx-dq-rsy"/>
                                         <constraint firstItem="ubP-OO-SG6" firstAttribute="leading" secondItem="E7b-z2-8tr" secondAttribute="trailing" constant="16" id="aH8-rZ-qqP"/>
+                                        <constraint firstItem="c1t-DI-muQ" firstAttribute="height" secondItem="ubP-OO-SG6" secondAttribute="height" id="bJy-y9-6Qb"/>
+                                        <constraint firstItem="NWH-aE-kZc" firstAttribute="height" secondItem="ubP-OO-SG6" secondAttribute="height" id="bPH-47-bBP"/>
                                         <constraint firstItem="E7b-z2-8tr" firstAttribute="top" secondItem="bSd-uK-l4Y" secondAttribute="top" id="eh1-AV-83B"/>
                                         <constraint firstItem="NWH-aE-kZc" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ubP-OO-SG6" secondAttribute="trailing" constant="40" id="g1l-La-mQd"/>
+                                        <constraint firstItem="c1t-DI-muQ" firstAttribute="top" secondItem="ubP-OO-SG6" secondAttribute="bottom" id="hkF-Od-o3Y"/>
                                         <constraint firstItem="NWH-aE-kZc" firstAttribute="top" secondItem="bSd-uK-l4Y" secondAttribute="topMargin" id="j43-fr-uqf"/>
                                         <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="c1t-DI-muQ" secondAttribute="trailing" constant="313" id="jHc-vZ-yLn"/>
                                         <constraint firstItem="oJV-uh-GkQ" firstAttribute="centerY" secondItem="bSd-uK-l4Y" secondAttribute="centerY" id="u5g-CA-C4r"/>

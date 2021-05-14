@@ -18,6 +18,9 @@ class NavigationViewController: UINavigationController {
     private func setupNavigationBar() {
         
         self.navigationBar.tintColor = Color.Accent.main
+        self.navigationBar.largeTitleTextAttributes  = [.foregroundColor : Color.Font.title]
+        self.navigationBar.titleTextAttributes = [.foregroundColor : Color.Font.title]
     }
 
 }
+

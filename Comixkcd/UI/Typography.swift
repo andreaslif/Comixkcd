@@ -17,7 +17,7 @@ struct Typography {
     }
     
     struct Font {
-        static let tableViewMain: UIFont = UIFont(name: "Helvetica-Bold", size: Typography.FontSize.tableViewMain)!
-        static let tableViewDetailed: UIFont = UIFont(name: "Helvetica", size: Typography.FontSize.tableViewDetailed)!
+        static let tableViewMain: UIFont = UIFont(name: "HelveticaNeue-Medium", size: Typography.FontSize.tableViewMain)!
+        static let tableViewDetailed: UIFont = UIFont(name: "HelveticaNeue", size: Typography.FontSize.tableViewDetailed)!
     }
 }
