@@ -19,7 +19,7 @@ struct ComicViewModel {
     var unread: Bool
     var favourited: Bool
     
-    // Initialize ComicViewModel from a Comic instance.
+    /// Initialize ComicViewModel from a Comic instance.
     init(comic: Comic) {
         
         self.number = Int(comic.num)
