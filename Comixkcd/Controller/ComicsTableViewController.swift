@@ -88,6 +88,7 @@ class ComicsTableViewController: UITableViewController {
                 
                 guard error == nil else { return }
                 guard comic != nil else { return }
+                
                 let comicViewModel = ComicViewModel(comic: comic!)
                 self.comicViewModels.append(comicViewModel)
                 self.tableView.reloadData()
