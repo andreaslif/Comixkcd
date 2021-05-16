@@ -49,6 +49,26 @@ class ComicService: NSObject {
         }).resume()
     }
     
+    func fetchLatestComic(completionHandler: @escaping (Comic?, Error?) -> ()) {
+
+        if let url = urlForLatestComic() {
+            
+            fetchComicFrom(url: url, with: URLSession.shared, completionHandler: completionHandler)
+        } else {
+            print("Failed to fetch latest comic")
+        }
+    }
+    
+    func fetchComic(number: Int, completionHandler: @escaping (Comic?, Error?) -> ()) {
+
+        if let url = urlForComic(number: number) {
+            
+            fetchComicFrom(url: url, with: URLSession.shared, completionHandler: completionHandler)
+        } else {
+            print("Failed to fetch comic number \(number)")
+        }
+    }
+    
     // MARK: - Source URLs
     
     /// Returns the url for the latest comic, or nil if an URL cannot be created.
@@ -56,7 +76,12 @@ class ComicService: NSObject {
         
         let urlString = "https://xkcd.com/info.0.json"
         
-        return URL(string: urlString)
+        guard let url = URL(string: urlString) else {
+            print("Failed to create URL for latest comic")
+            return nil
+        }
+        
+        return url
     }
     
     /// Returns the url for the comic with the provided number, or nil if an URL cannot be created.
@@ -64,7 +89,12 @@ class ComicService: NSObject {
                 
         let urlString = "https://xkcd.com/\(String(number))/info.0.json"
         
-        return URL(string: urlString)
+        guard let url = URL(string: urlString) else {
+            print("Failed to create URL for comic number \(number)")
+            return nil
+        }
+        
+        return url
     }
     
 }

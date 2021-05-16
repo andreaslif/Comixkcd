@@ -15,13 +15,14 @@ class ComicsTableViewController: UITableViewController {
     private var cellId = "ComicTableViewCell"
     private var segueId = "ComicIdentifier"
     
-    // MARK: - viewDidLoad
+    // MARK: - viewDidLoad etc.
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
-        loadLatestComics()
+        loadAllSavedComics()
+        fetchLatestComics()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,23 +88,99 @@ class ComicsTableViewController: UITableViewController {
     
     // MARK: - Fetching comics
     
-    func loadLatestComics() {
-                
-        if latestComicNumberIsUnknown() {
+    /// Fetches all ComicViewModels that have been saved to CoreData and updates the UITableView with them.
+    private func loadAllSavedComics() {
+
+        let savedComicViewModels = CoreDataManager.shared.allSavedComicViewModels()
+        updateTableViewWith(comicViewModels: savedComicViewModels)
+    }
+    
+    /// Fetches the latest comics
+    private func fetchLatestComics() {
+        
+        var latestComic: Int? = nil
+        var latestComicViewModels = [ComicViewModel]()
+        
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        
+        // Fetch the latest comic
+        ComicService.shared.fetchLatestComic(completionHandler: { comic, error in
             
-            ComicService.shared.fetchComicFrom(url: ComicService.shared.urlForLatestComic()!, with: URLSession.shared, completionHandler: { comic, error in
+            guard error == nil else { return }
+            guard comic != nil else { return }
+            
+            let latestComicViewModel = ComicViewModel(comic: comic!)
+            latestComicViewModels.append(latestComicViewModel)
+            latestComic = latestComicViewModel.number
+            
+            dispatchGroup.leave()
+        })
+        
+        // Wait for latest comic to get fetched, so we know what other ones to fetch
+        dispatchGroup.notify(queue: DispatchQueue.main, execute: {
+            
+            let innerDispatchGroup = DispatchGroup()
+            
+            guard latestComic != nil else { return }
+            let startIndex = latestComic! - Config.minimumNumberOfComics + 1
+            guard startIndex >= 0 else { return }
+            
+            var latestComicNumbers: [Int] = Array(startIndex...latestComic!)
+            latestComicNumbers = self.removeAlreadyLoadedComicNumbers(from: latestComicNumbers)
+            
+            for comicNumber in latestComicNumbers {
                 
-                guard error == nil else { return }
-                guard comic != nil else { return }
+                innerDispatchGroup.enter()
                 
-                let comicViewModel = ComicViewModel(comic: comic!)
-                self.comicViewModels.append(comicViewModel)
-                self.tableView.reloadData()
+                ComicService.shared.fetchComic(number: comicNumber, completionHandler: { comic, error in
+                    
+                    guard error == nil else { return }
+                    guard comic != nil else { return }
+                    
+                    let comicViewModel = ComicViewModel(comic: comic!)
+                    latestComicViewModels.append(comicViewModel)
+                    
+                    innerDispatchGroup.leave()
+                })
+            }
+            
+            // Wait for all fetching to finish.
+            innerDispatchGroup.notify(queue: DispatchQueue.main, execute: {
                 
-                //BasicStorage.shared.latestComic = comicViewModel.number
+                self.updateTableViewWith(comicViewModels: latestComicViewModels)
             })
-            // Load x more comics
+        })
+    }
+    
+    /// Takes the input array of Ints, which represent ComicViewModel number parameters, and removes any that are already in self.comicViewModels.
+    /// - A similar filtering is provied by updateTableViewWith(comicViewModels:), but that requires us to first fetch all the Comic objects and convert them to ComicViewModels. This way we can filter the numbers first and then fetch only the ones we need.
+    private func removeAlreadyLoadedComicNumbers(from comicNumbers: [Int]) -> [Int] {
+        
+        var newNumbers = [Int]()
+        
+        for number in comicNumbers {
+            if self.comicViewModels.contains(where: { $0.number == number }) == false {
+                newNumbers.append(number)
+            }
         }
+
+        return newNumbers
+    }
+    
+    /// Adds the provided ComicViewModel as an entry in the UITableView and updates it, if it's not already in there.
+    private func updateTableViewWith(comicViewModels: [ComicViewModel]) {
+        
+        // If comicViewModel is not already in self.comicViewModels
+        for comicViewModel in comicViewModels {
+            if self.comicViewModels.contains(where: { $0.number == comicViewModel.number }) == false {
+                
+                self.comicViewModels.append(comicViewModel)
+                self.comicViewModels.sort(by: { $0.number > $1.number })
+            }
+        }
+        
+        self.tableView.reloadData()
     }
 
     // MARK: - Conditionals
