@@ -11,7 +11,7 @@ class ComicsTableViewController: UITableViewController {
 
     // MARK: - Variables and constants
     
-    private var comicViewModels = [ComicViewModel]()
+    var comicViewModels = [ComicViewModel]()
     private var cellId = "ComicTableViewCell"
     private var segueId = "ComicIdentifier"
     
@@ -75,6 +75,7 @@ class ComicsTableViewController: UITableViewController {
             
             destinationViewController.comicViewModel = comicViewModels[selectedIndexPath.row
             ]
+            destinationViewController.comicsTableViewController = self
         }
     }
 
@@ -184,6 +185,7 @@ class ComicsTableViewController: UITableViewController {
     }
 
     // MARK: - Conditionals
+    // These are functions to improve readability of the code, e.g. making it easier to understand what an if-statement is actually getting at.
  
     /// Returns true if the latest comic number is unknown, false otherwise. This should only really be true the first that time the app is launched.
     func latestComicNumberIsUnknown() -> Bool {

@@ -13,7 +13,7 @@
 		E1135E01264C4A0500486E2D /* Comixkcd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1135DFF264C4A0500486E2D /* Comixkcd.xcdatamodeld */; };
 		E1135E03264C4A0700486E2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1135E02264C4A0700486E2D /* Assets.xcassets */; };
 		E1135E06264C4A0700486E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1135E04264C4A0700486E2D /* LaunchScreen.storyboard */; };
-		E1135E11264C4A0800486E2D /* ComixkcdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E10264C4A0800486E2D /* ComixkcdTests.swift */; };
+		E1135E11264C4A0800486E2D /* TestComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E10264C4A0800486E2D /* TestComicViewModel.swift */; };
 		E1135E1C264C4A0800486E2D /* ComixkcdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E1B264C4A0800486E2D /* ComixkcdUITests.swift */; };
 		E1135E40264C4CE800486E2D /* ComicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E3F264C4CE800486E2D /* ComicsTableViewController.swift */; };
 		E1135E45264C4CF600486E2D /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E44264C4CF600486E2D /* ComicViewModel.swift */; };

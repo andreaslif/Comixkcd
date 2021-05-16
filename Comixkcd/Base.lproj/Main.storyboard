@@ -51,10 +51,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StarFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJV-uh-GkQ">
-                                            <rect key="frame" x="327" y="30" width="40" height="40"/>
+                                            <rect key="frame" x="343" y="38" width="24" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="oJV-uh-GkQ" secondAttribute="height" multiplier="1:1" id="fgA-Pv-ioT"/>
-                                                <constraint firstAttribute="height" constant="40" id="zdh-TB-vhf"/>
+                                                <constraint firstAttribute="height" constant="24" id="zdh-TB-vhf"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
@@ -120,7 +120,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="43u-Mc-kZo"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

@@ -24,6 +24,11 @@ struct Color {
         
         static let main: UIColor = UIColor(named: AssetNames.teal) ?? UIColor.systemTeal
     }
+    
+    struct Icon {
+        
+        static let favourite: UIColor = UIColor(named: AssetNames.greyLowContrast) ?? UIColor.secondaryLabel
+    }
 }
 
 /// To avoid mistyping strings in the Color struct above, all asset names are available here as variables instead.

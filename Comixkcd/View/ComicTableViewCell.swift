@@ -17,18 +17,18 @@ class ComicTableViewCell: UITableViewCell {
     
     var comicViewModel: ComicViewModel! {
         didSet {
-
+            
             self.dateLabel.text = comicViewModel.date
             self.titleLabel.text = comicViewModel.title
             self.numberLabel.text = "#\(comicViewModel.number)"
+            self.favouriteIndicator.tintColor = Color.Icon.favourite
             
-            switch BasicStorage.shared.readComics.contains(comicViewModel.number) {
-            case false:
-                unreadIndicator.alpha = 1
-            case true:
+            if BasicStorage.shared.readComics.contains(comicViewModel.number) {
                 unreadIndicator.alpha = 0
+            } else {
+                unreadIndicator.alpha = 1
             }
- 
+            
             if comicViewModel.favourited {
                 favouriteIndicator.alpha = 1
             } else {
@@ -39,7 +39,6 @@ class ComicTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         // Customize cell
         setupFonts()

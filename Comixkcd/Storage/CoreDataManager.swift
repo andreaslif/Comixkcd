@@ -30,12 +30,12 @@ class CoreDataManager: NSObject {
     
     // MARK: - Functions
 
-    /// Saves the provided ComicViewModel to CoreData
-    func save(comicViewModel: ComicViewModel) {
+    /// Saves the provided ComicViewModel to CoreData. Returns true if successful, false if not.
+    func successfullySave(comicViewModel: ComicViewModel) -> Bool {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate
             else {
-                return
+                return false
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -52,6 +52,7 @@ class CoreDataManager: NSObject {
         
         if let imageData = comicViewModel.image?.pngData() {
             entry.setValue(imageData, forKeyPath: ComicKeys.imageData)
+        } else {
             print("Failed to get image data from comicViewModel #\(comicViewModel.number)")
         }
         
@@ -59,7 +60,10 @@ class CoreDataManager: NSObject {
             try managedContext.save()
         } catch let error as NSError {
             print("Failed to save comicViewModel: \(error)")
+            return false
         }
+        
+        return true
     }
     
     /// Returns an array of all ComicViewModels that have been saved to CoreData.

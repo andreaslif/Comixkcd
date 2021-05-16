@@ -13,6 +13,7 @@ class ComicViewController: UIViewController {
     @IBOutlet weak var alternativeCaption: UITextView!
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
     
+    var comicsTableViewController: ComicsTableViewController? = nil
     var comicViewModel: ComicViewModel? = nil
     
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class ComicViewController: UIViewController {
         setupCaption()
         setupNavigationBar()
         flagComicAsRead()
+        updateFavouriteButtonAppearance()
     }
     
     private func setupComicImage() {
@@ -46,10 +48,10 @@ class ComicViewController: UIViewController {
     
     private func setupFavouriteButton() {
         
-        updateFavouriteButton()
+        updateFavouriteButtonAppearance()
     }
     
-    private func updateFavouriteButton() {
+    private func updateFavouriteButtonAppearance() {
         
         switch comicViewModel?.favourited {
         case false:
@@ -62,17 +64,31 @@ class ComicViewController: UIViewController {
         }
     }
     
-    private func toggleFavourite() {
+    /// Toggles the currently viewed comic as a favourite. Returns true if successful, false if not.
+    private func successfullyToggleFavourite() -> Bool {
         
-        switch comicViewModel?.favourited {
-        case false:
-            comicViewModel?.favourited = true
-        case true:
-            comicViewModel?.favourited = false
-        default:
-            comicViewModel?.favourited = false
-            print("Unexpected value found. This should never happen")
+        guard self.comicViewModel != nil else {
+            return false
         }
+        
+        switch self.comicViewModel!.favourited {
+        case false:
+            self.comicViewModel?.favourited = true
+        case true:
+            self.comicViewModel?.favourited = false
+        }
+        
+        if CoreDataManager.shared.successfullySave(comicViewModel: self.comicViewModel!) {
+            if successfullyUpdateViewModelInParentViewController() {
+                return true
+            } else {
+                print("Failed to update ComicViewModel in ComicsTableViewController")
+            }
+        } else {
+            print("Failed to save ComicViewModel to CoreData")
+        }
+        
+        return false
     }
     
     private func flagComicAsRead() {
@@ -85,19 +101,35 @@ class ComicViewController: UIViewController {
         BasicStorage.shared.addToReadList(number: comicViewModel!.number)
     }
     
+    /// Updates the corresponding ComicViewModel in ComicsTableViewController's array comicViewModels to reflect any changes made, e.g. when the favourite variable has been changed.
+    private func successfullyUpdateViewModelInParentViewController() -> Bool {
+
+        guard self.comicViewModel != nil else { return false }
+        guard self.comicsTableViewController != nil else { return false }
+        
+        if let index = comicsTableViewController!.comicViewModels.firstIndex(where: { $0.number == self.comicViewModel!.number }) {
+
+            comicsTableViewController!.comicViewModels.remove(at: index)
+            comicsTableViewController!.comicViewModels.insert(self.comicViewModel!, at: index)
+            
+            return true
+        }
+        
+        return false
+    }
+        
     // MARK: - Interaction
     
     @IBAction func didTapFavouriteButton(_ sender: Any) {
         
-        updateFavouriteButton()
-        
-        // TODO: Save change
-        toggleFavourite()
+        if successfullyToggleFavourite() {
+            updateFavouriteButtonAppearance()
+        }
     }
     
     @IBAction func didTapActionButton(_ sender: Any) {
         
         // TODO: Display share sheet
     }
-    
+
 }

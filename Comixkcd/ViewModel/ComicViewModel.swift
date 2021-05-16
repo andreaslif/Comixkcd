@@ -7,8 +7,9 @@
 
 import Foundation
 import UIKit
+import CoreData
 
-struct ComicViewModel {
+struct ComicViewModel: Equatable {
     
     let number: Int
     let title: String
@@ -29,6 +30,28 @@ struct ComicViewModel {
         self.image = imageFrom(imageUrlString: comic.img)
 
         self.favourited = false
+    }
+    
+    /// Initialize ComicViewModel from NSManagedObject.
+    init(managedObject: NSManagedObject) {
+        
+        self.number = managedObject.value(forKey: CoreDataManager.ComicKeys.number) as? Int ?? 0
+        self.title = managedObject.value(forKey: CoreDataManager.ComicKeys.title) as? String ?? ""
+        self.date = managedObject.value(forKey: CoreDataManager.ComicKeys.date) as? String ?? ""
+        self.transcript = managedObject.value(forKey: CoreDataManager.ComicKeys.transcript) as? String ?? ""
+        self.alternativeCaption = managedObject.value(forKey: CoreDataManager.ComicKeys.alternativeCaption) as? String ?? ""
+        self.favourited = managedObject.value(forKey: CoreDataManager.ComicKeys.favourited) as? Bool ?? false
+        
+        if let imageData = managedObject.value(forKey: CoreDataManager.ComicKeys.imageData) as? Data {
+            self.image = imageFrom(data: imageData)
+        } else {
+            self.image = nil
+        }
+    }
+    
+    /// Needed to conform to Equatable protocol, which is necessary to check if one ComicViewModel is equal to another. We're defining here that two ComicViewModels with the same number parameter are equal.
+    static func == (lhs: ComicViewModel, rhs: ComicViewModel) -> Bool {
+        return lhs.number == rhs.number
     }
 }
 
@@ -66,16 +89,21 @@ private func imageFrom(imageUrlString: String) -> UIImage? {
     }
     
     if let data = try? Data(contentsOf: imageUrl) {
-        if let imageFromData = UIImage(data: data) {
-            image = imageFromData
-        } else {
-            print("Failed to convert image data from \(imageUrl) to UIImage")
-            return nil
-        }
+        image = imageFrom(data: data)
     } else {
         print("Failed to get image data from: \(imageUrl)")
-        return nil
     }
     
     return image
+}
+
+/// Returns a UIImage from the provided data, or nil if one cannot be created.
+private func imageFrom(data: Data) -> UIImage? {
+    
+    if let image = UIImage(data: data) {
+        return image
+    } else {
+        print("Failed to convert image from data.")
+        return nil
+    }
 }
