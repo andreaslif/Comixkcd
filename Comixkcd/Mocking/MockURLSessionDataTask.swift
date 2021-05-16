@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// An instance of this class can be used instead of an instance of an URLSessionDataTask instance in order to fake a data response for testing purposes.
 class MockURLSessionDataTask: URLSessionDataTask {
     
     private let closure: () -> Void

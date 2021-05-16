@@ -9,6 +9,7 @@ import Foundation
 
 class Config: NSObject {
     
+    /// The minimum number of comics that should be loaded on the first screen, including favourites.
     static let minimumNumberOfComics: Int = 10
     
     // MARK: - Unit Tests

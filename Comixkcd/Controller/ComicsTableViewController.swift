@@ -62,6 +62,14 @@ class ComicsTableViewController: UITableViewController {
         return 80
     }
     
+    // MARK: - Navigation bar
+    
+    private func setupNavigationBar() {
+        
+        navigationItem.title = "Comics"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,14 +87,6 @@ class ComicsTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Navigation bar
-    
-    private func setupNavigationBar() {
-        
-        navigationItem.title = "Comics"
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
     // MARK: - Fetching comics
     
     /// Fetches all ComicViewModels that have been saved to CoreData and updates the UITableView with them.
@@ -96,7 +96,7 @@ class ComicsTableViewController: UITableViewController {
         updateTableViewWith(comicViewModels: savedComicViewModels)
     }
     
-    /// Fetches the latest comics
+    /// Fetches the latest comics, the number of which are specified under Config.
     private func fetchLatestComics() {
         
         var latestComic: Int? = nil
@@ -182,14 +182,6 @@ class ComicsTableViewController: UITableViewController {
         }
         
         self.tableView.reloadData()
-    }
-
-    // MARK: - Conditionals
-    // These are functions to improve readability of the code, e.g. making it easier to understand what an if-statement is actually getting at.
- 
-    /// Returns true if the latest comic number is unknown, false otherwise. This should only really be true the first that time the app is launched.
-    func latestComicNumberIsUnknown() -> Bool {
-        return BasicStorage.shared.latestComic == 0
     }
     
 }

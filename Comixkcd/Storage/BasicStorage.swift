@@ -30,7 +30,7 @@ class BasicStorage: NSObject {
         }
     }
     
-    // TODO: Is this still needed? Found another way of doing what this was created for.
+    /// Not imlpemented yet. The idea is to store the number parameter of the latest ComicViewModel here check periodically if 
     var latestComic: Int = 0 {
         didSet {
             UserDefaults.standard.setValue(latestComic, forKey: Keys.latestComic)

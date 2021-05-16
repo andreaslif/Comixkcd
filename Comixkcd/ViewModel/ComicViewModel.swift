@@ -58,7 +58,7 @@ struct ComicViewModel: Equatable {
         }
     }
     
-    /// Needed to conform to Equatable protocol, which is necessary to check if one ComicViewModel is equal to another. We're defining here that two ComicViewModels with the same number parameter are equal.
+    /// Needed in order to conform to Equatable protocol, which is necessary to check if one ComicViewModel is equal to another (assuming that we consider two ComicViewModels with the same number variable as equal)
     static func == (lhs: ComicViewModel, rhs: ComicViewModel) -> Bool {
         return lhs.number == rhs.number
     }
@@ -76,7 +76,6 @@ private func dateStringFrom(year: String, month: String, day: String) -> String 
     return "\(year)-\(month)-\(day)"
 }
 
-// TODO: Add test?
 /// Inserts a leading zero for single integer numbers that represents days or months. Can be used to e.g. turn '2021-5-12' into '2021-05-12'.
 private func insertLeadingZeroIfNeededFor(monthOrDay: String) -> String {
     

@@ -9,12 +9,16 @@ import UIKit
 
 class ComicViewController: UIViewController {
     
+    // MARK: - Variables and constants
+    
     @IBOutlet weak var comicView: UIImageView!
     @IBOutlet weak var alternativeCaption: UITextView!
     @IBOutlet weak var favouriteButton: UIBarButtonItem!
     
     var comicsTableViewController: ComicsTableViewController? = nil
     var comicViewModel: ComicViewModel? = nil
+    
+    // MARK: - viewDidLoad() etc.
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,8 @@ class ComicViewController: UIViewController {
         flagComicAsRead()
         updateFavouriteButtonAppearance()
     }
+    
+    // MARK: - Setup functions
     
     private func setupComicImage() {
         
@@ -50,6 +56,8 @@ class ComicViewController: UIViewController {
         
         updateFavouriteButtonAppearance()
     }
+    
+    // MARK: - Favourites & read status
     
     private func updateFavouriteButtonAppearance() {
         

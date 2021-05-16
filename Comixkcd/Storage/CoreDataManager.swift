@@ -29,7 +29,7 @@ class CoreDataManager: NSObject {
         static let link = "link"
     }
     
-    // MARK: - Functions
+    // MARK: - Public functions
 
     /// Saves the provided ComicViewModel to CoreData. Returns true if successful, false if not.
     func successfullySave(comicViewModel: ComicViewModel) -> Bool {
@@ -75,6 +75,8 @@ class CoreDataManager: NSObject {
         
         return comicViewModels
     }
+    
+    // MARK: - Private functions
     
     private func allSavedEntries() -> [NSManagedObject] {
         
