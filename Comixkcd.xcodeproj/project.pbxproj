@@ -27,6 +27,9 @@
 		E1135E8F264F081200486E2D /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135E8E264F081200486E2D /* NavigationViewController.swift */; };
 		E1135EAB264FE28500486E2D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135EAA264FE28500486E2D /* CoreDataManager.swift */; };
 		E1135EB62651387500486E2D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1135EB52651387500486E2D /* Config.swift */; };
+		E18A705626518C1F00C1F18C /* TestDataFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A705526518C1F00C1F18C /* TestDataFetching.swift */; };
+		E18A705C26518C6100C1F18C /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A705B26518C6100C1F18C /* MockURLSessionDataTask.swift */; };
+		E18A706426518C8E00C1F18C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A706326518C8E00C1F18C /* MockURLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		E1135E8E264F081200486E2D /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		E1135EAA264FE28500486E2D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		E1135EB52651387500486E2D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		E18A705526518C1F00C1F18C /* TestDataFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataFetching.swift; sourceTree = "<group>"; };
+		E18A705B26518C6100C1F18C /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		E18A706326518C8E00C1F18C /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +138,7 @@
 				E1135E2D264C4C5600486E2D /* Service */,
 				E1135E31264C4C8100486E2D /* UI */,
 				E1135E58264C532E00486E2D /* Storage */,
+				E18A705A26518C3300C1F18C /* Mocking */,
 				E1135DF6264C4A0500486E2D /* AppDelegate.swift */,
 				E1135DF8264C4A0500486E2D /* SceneDelegate.swift */,
 				E1135E02264C4A0700486E2D /* Assets.xcassets */,
@@ -145,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				E1135E10264C4A0800486E2D /* TestComicViewModel.swift */,
+				E18A705526518C1F00C1F18C /* TestDataFetching.swift */,
 				E1135E12264C4A0800486E2D /* Info.plist */,
 			);
 			path = ComixkcdTests;
@@ -218,6 +226,15 @@
 				E1135EAA264FE28500486E2D /* CoreDataManager.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		E18A705A26518C3300C1F18C /* Mocking */ = {
+			isa = PBXGroup;
+			children = (
+				E18A705B26518C6100C1F18C /* MockURLSessionDataTask.swift */,
+				E18A706326518C8E00C1F18C /* MockURLSession.swift */,
+			);
+			path = Mocking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,7 +371,9 @@
 				E1135E8F264F081200486E2D /* NavigationViewController.swift in Sources */,
 				E1135EB62651387500486E2D /* Config.swift in Sources */,
 				E1135DF7264C4A0500486E2D /* AppDelegate.swift in Sources */,
+				E18A706426518C8E00C1F18C /* MockURLSession.swift in Sources */,
 				E1135E4F264C4D1800486E2D /* ComicTableViewCell.swift in Sources */,
+				E18A705C26518C6100C1F18C /* MockURLSessionDataTask.swift in Sources */,
 				E1135E4A264C4D0300486E2D /* Comic.swift in Sources */,
 				E1135E6D264C5B9100486E2D /* ComicService.swift in Sources */,
 				E1135E8A264EF35800486E2D /* Color.swift in Sources */,
@@ -373,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1135E11264C4A0800486E2D /* TestComicViewModel.swift in Sources */,
+				E18A705626518C1F00C1F18C /* TestDataFetching.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

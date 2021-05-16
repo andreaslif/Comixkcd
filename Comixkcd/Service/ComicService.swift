@@ -85,7 +85,7 @@ class ComicService: NSObject {
     }
     
     /// Returns the url for the comic with the provided number, or nil if an URL cannot be created.
-    private func urlForComic(number: Int) -> URL? {
+    func urlForComic(number: Int) -> URL? {
                 
         let urlString = "https://xkcd.com/\(String(number))/info.0.json"
         
