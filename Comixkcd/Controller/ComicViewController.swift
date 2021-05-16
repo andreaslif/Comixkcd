@@ -21,6 +21,7 @@ class ComicViewController: UIViewController {
         setupComicImage()
         setupCaption()
         setupNavigationBar()
+        flagComicAsRead()
     }
     
     private func setupComicImage() {
@@ -72,6 +73,16 @@ class ComicViewController: UIViewController {
             comicViewModel?.favourited = false
             print("Unexpected value found. This should never happen")
         }
+    }
+    
+    private func flagComicAsRead() {
+        
+        guard self.comicViewModel?.number != nil else {
+            print("Failed to flag comic as read.")
+            return
+        }
+        
+        BasicStorage.shared.addToReadList(number: comicViewModel!.number)
     }
     
     // MARK: - Interaction

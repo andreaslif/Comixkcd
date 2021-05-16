@@ -22,12 +22,13 @@ class ComicTableViewCell: UITableViewCell {
             self.titleLabel.text = comicViewModel.title
             self.numberLabel.text = "#\(comicViewModel.number)"
             
-            if comicViewModel.unread {
+            switch BasicStorage.shared.readComics.contains(comicViewModel.number) {
+            case false:
                 unreadIndicator.alpha = 1
-            } else {
+            case true:
                 unreadIndicator.alpha = 0
             }
-            
+ 
             if comicViewModel.favourited {
                 favouriteIndicator.alpha = 1
             } else {

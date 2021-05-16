@@ -16,7 +16,6 @@ struct ComicViewModel {
     let transcript: String
     let alternativeCaption: String
     let image: UIImage?
-    var unread: Bool
     var favourited: Bool
     
     /// Initialize ComicViewModel from a Comic instance.
@@ -28,9 +27,7 @@ struct ComicViewModel {
         self.transcript = comic.transcript
         self.alternativeCaption = comic.alt
         self.image = imageFrom(imageUrlString: comic.img)
-        
-        // TODO: Condition unread if fetching something that's been read before
-        self.unread = true
+
         self.favourited = false
     }
 }

@@ -24,6 +24,13 @@ class ComicsTableViewController: UITableViewController {
         loadLatestComics()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // TODO: Is there a better place for this function call? We want to call it when transitioning back from viewing a comic.
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view
 
     override func numberOfSections(in tableView: UITableView) -> Int {
