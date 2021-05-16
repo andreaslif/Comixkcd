@@ -18,6 +18,7 @@ struct ComicViewModel: Equatable {
     let alternativeCaption: String
     let image: UIImage?
     var favourited: Bool
+    let link: String
     
     /// Initialize ComicViewModel from a Comic instance.
     init(comic: Comic) {
@@ -28,8 +29,15 @@ struct ComicViewModel: Equatable {
         self.transcript = comic.transcript
         self.alternativeCaption = comic.alt
         self.image = imageFrom(imageUrlString: comic.img)
-
+        
         self.favourited = false
+        
+        // Link seems to always be empty (perhaps not used by server?). Let's create our own link as long as that's the case.
+        if comic.link.isEmpty {
+            self.link = "https://xkcd.com/\(number)/"
+        } else {
+            self.link = comic.link
+        }
     }
     
     /// Initialize ComicViewModel from NSManagedObject.
@@ -41,6 +49,7 @@ struct ComicViewModel: Equatable {
         self.transcript = managedObject.value(forKey: CoreDataManager.ComicKeys.transcript) as? String ?? ""
         self.alternativeCaption = managedObject.value(forKey: CoreDataManager.ComicKeys.alternativeCaption) as? String ?? ""
         self.favourited = managedObject.value(forKey: CoreDataManager.ComicKeys.favourited) as? Bool ?? false
+        self.link = managedObject.value(forKey: CoreDataManager.ComicKeys.link) as? String ?? ""
         
         if let imageData = managedObject.value(forKey: CoreDataManager.ComicKeys.imageData) as? Data {
             self.image = imageFrom(data: imageData)

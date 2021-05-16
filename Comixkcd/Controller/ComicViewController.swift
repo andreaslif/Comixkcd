@@ -129,7 +129,20 @@ class ComicViewController: UIViewController {
     
     @IBAction func didTapActionButton(_ sender: Any) {
         
-        // TODO: Display share sheet
+        guard self.comicViewModel != nil else {
+            print("Failed to share comic. Could not find ComicViewModel")
+            return
+        }
+        
+        let url = URL(string: self.comicViewModel!.link)
+        guard url != nil else {
+            print("Failed to share comic. Could not create URL")
+            return
+        }
+        
+        let activityViewController = UIActivityViewController.init(activityItems: [url!], applicationActivities: nil)
+        
+        self.present(activityViewController, animated: true, completion: nil)
     }
 
 }

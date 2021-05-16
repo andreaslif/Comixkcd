@@ -41,6 +41,7 @@ class TestComicViewModel: XCTestCase {
         XCTAssert(comicViewModel.number == 105)
         XCTAssert(comicViewModel.transcript == "A transcript")
         XCTAssert(comicViewModel.favourited == false)
+        XCTAssert(comicViewModel.link == "https://somelink.com")
     }
     
     // TODO: Add test for creating ComicViewModel from a NSManagedObject

@@ -26,6 +26,7 @@ class CoreDataManager: NSObject {
         static let title = "title"
         static let transcript = "transcript"
         static let imageData = "imageData"
+        static let link = "link"
     }
     
     // MARK: - Functions
