@@ -119,7 +119,7 @@ class ComicsTableViewController: UITableViewController {
         })
         
         // Wait for latest comic to get fetched, so we know what other ones to fetch
-        dispatchGroup.notify(queue: DispatchQueue.main, execute: {
+        dispatchGroup.notify(queue: DispatchQueue.global(), execute: {
             
             let innerDispatchGroup = DispatchGroup()
             
@@ -147,7 +147,7 @@ class ComicsTableViewController: UITableViewController {
             }
             
             // Wait for all fetching to finish.
-            innerDispatchGroup.notify(queue: DispatchQueue.main, execute: {
+            innerDispatchGroup.notify(queue: DispatchQueue.global(), execute: {
                 
                 self.updateTableViewWith(comicViewModels: latestComicViewModels)
             })
@@ -181,7 +181,15 @@ class ComicsTableViewController: UITableViewController {
             }
         }
         
-        self.tableView.reloadData()
+        // Needs to run on main thread
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
+    
+    /*
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // TODO: Use this to identify when we've reached the bottom, and use that as a trigger to load more comics.
+    }*/
     
 }
