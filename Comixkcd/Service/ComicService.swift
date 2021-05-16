@@ -27,7 +27,7 @@ class ComicService: NSObject {
                 return
             }
             
-            // If there's no error, data should not be nil. But just to be safe, let's guard against it, in case that changes.
+            // If there's no error, data should not be nil. But let's guard against it just to be safe, in case that changes.
             guard data != nil else {
                 completionHandler(nil, nil)
                 print("Failed to get data. This should never happen")
