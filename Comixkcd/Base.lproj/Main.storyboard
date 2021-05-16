@@ -111,7 +111,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZZe-sF-5DN">
                                 <rect key="frame" x="20" y="108" width="374" height="374"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ZZe-sF-5DN" secondAttribute="height" multiplier="1:1" id="k7C-ZU-LI8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="ZZe-sF-5DN" secondAttribute="height" multiplier="1:1" id="k7C-ZU-LI8"/>
+                                    <constraint firstAttribute="width" secondItem="ZZe-sF-5DN" secondAttribute="height" multiplier="1:1" priority="250" id="x6B-8W-pXC"/>
                                 </constraints>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VHj-wq-17X">
