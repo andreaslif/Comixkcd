@@ -43,6 +43,6 @@ class TestComicViewModel: XCTestCase {
         XCTAssert(comicViewModel.favourited == false)
     }
     
-    // TODO: Add test for creating PlaceViewModel from a NSManagedObject
+    // TODO: Add test for creating ComicViewModel from a NSManagedObject
 
 }
