@@ -32,7 +32,7 @@ class ComicsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // TODO: Is there a better place for this function call? We want to call it when transitioning back from viewing a comic to update read indicator.
+        // TODO: Is there a better place for this function call? We want to call it when transitioning back from viewing a comic to update read/favourite indicators.
         self.tableView.reloadData()
     }
     

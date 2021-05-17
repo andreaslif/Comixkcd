@@ -74,23 +74,20 @@ class ComicViewController: UIViewController {
     
     private func updateFavouriteButtonAppearance() {
         
-        switch comicViewModel?.favourited {
+        guard self.comicViewModel != nil else { return }
+        
+        switch self.comicViewModel!.favourited {
         case false:
             favouriteButton.image = UIImage(named: "Star")
         case true:
             favouriteButton.image = UIImage(named: "StarFill")
-        default:
-            favouriteButton.image = UIImage(named: "Star")
-            print("Unexpected value found. This should never happen")
         }
     }
     
     /// Toggles the currently viewed comic as a favourite. Returns true if successful, false if not.
     private func successfullyToggleFavourite() -> Bool {
         
-        guard self.comicViewModel != nil else {
-            return false
-        }
+        guard self.comicViewModel != nil else { return false }
         
         switch self.comicViewModel!.favourited {
         case false:
@@ -101,6 +98,7 @@ class ComicViewController: UIViewController {
         
         if CoreDataManager.shared.successfullySave(comicViewModel: self.comicViewModel!) {
             if successfullyUpdateViewModelInComicsTableViewController() {
+                
                 return true
             } else {
                 print("Failed to update ComicViewModel in ComicsTableViewController")
@@ -114,10 +112,7 @@ class ComicViewController: UIViewController {
     
     private func flagComicAsRead() {
         
-        guard self.comicViewModel?.number != nil else {
-            print("Failed to flag comic as read.")
-            return
-        }
+        guard self.comicViewModel != nil else { return }
         
         BasicStorage.shared.addToReadList(number: comicViewModel!.number)
     }
@@ -143,7 +138,9 @@ class ComicViewController: UIViewController {
     
     @IBAction func didTapFavouriteButton(_ sender: Any) {
         
+        // Only update the favourite button if we actually manage to save the change, so that we don't give the user a false sense of success if we for some reason can't.
         if successfullyToggleFavourite() {
+            
             updateFavouriteButtonAppearance()
         }
     }

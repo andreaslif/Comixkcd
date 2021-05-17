@@ -30,13 +30,6 @@ class BasicStorage: NSObject {
         }
     }
     
-    /// Not imlpemented yet. The idea is to store the number parameter of the latest ComicViewModel here check periodically if 
-    var latestComic: Int = 0 {
-        didSet {
-            UserDefaults.standard.setValue(latestComic, forKey: Keys.latestComic)
-        }
-    }
-    
     // MARK: - Overriding init
     // When initialized, we check if there's anything already stored in UserDefaults and update the variables accordingly
     
@@ -45,11 +38,7 @@ class BasicStorage: NSObject {
         if UserDefaults.standard.object(forKey: Keys.readComics) != nil {
             readComics = UserDefaults.standard.object(forKey: Keys.readComics) as! [Int]
         }
-        
-        if UserDefaults.standard.object(forKey: Keys.latestComic) != nil {
-            latestComic = UserDefaults.standard.object(forKey: Keys.latestComic) as! Int
-        }
-    
+
     }
     
     // MARK: - Functions
