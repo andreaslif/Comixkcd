@@ -16,7 +16,8 @@ struct ComicViewModel: Equatable {
     let date: String
     let transcript: String
     let alternativeCaption: String
-    let image: UIImage?
+    var image: UIImage?
+    let imageUrl: String
     var favourited: Bool
     let link: String
     
@@ -28,7 +29,10 @@ struct ComicViewModel: Equatable {
         self.date = dateStringFrom(year: comic.year, month: comic.month, day: comic.day)
         self.transcript = comic.transcript
         self.alternativeCaption = comic.alt
-        self.image = imageFrom(imageUrlString: comic.img)
+        
+        // When initializing from a Comic object, we don't immediately download the image, as this can slow the app down.
+        self.image = nil
+        self.imageUrl = comic.img
         
         self.favourited = false
         
@@ -50,10 +54,13 @@ struct ComicViewModel: Equatable {
         self.alternativeCaption = managedObject.value(forKey: CoreDataManager.ComicKeys.alternativeCaption) as? String ?? ""
         self.favourited = managedObject.value(forKey: CoreDataManager.ComicKeys.favourited) as? Bool ?? false
         self.link = managedObject.value(forKey: CoreDataManager.ComicKeys.link) as? String ?? ""
-        
+        self.imageUrl = managedObject.value(forKey: CoreDataManager.ComicKeys.imageUrl) as? String ?? ""
+
         if let imageData = managedObject.value(forKey: CoreDataManager.ComicKeys.imageData) as? Data {
+
             self.image = imageFrom(data: imageData)
         } else {
+
             self.image = nil
         }
     }
@@ -84,34 +91,4 @@ private func insertLeadingZeroIfNeededFor(monthOrDay: String) -> String {
     }
     
     return monthOrDay
-}
-
-/// Returns a UIImage from the provided URL string, or nil if one cannot be found.
-private func imageFrom(imageUrlString: String) -> UIImage? {
-    
-    var image: UIImage? = nil
-    
-    guard let imageUrl = URL(string: imageUrlString) else {
-        print("Failed to create url for image at: \(imageUrlString)")
-        return nil
-    }
-    
-    if let data = try? Data(contentsOf: imageUrl) {
-        image = imageFrom(data: data)
-    } else {
-        print("Failed to get image data from: \(imageUrl)")
-    }
-    
-    return image
-}
-
-/// Returns a UIImage from the provided data, or nil if one cannot be created.
-private func imageFrom(data: Data) -> UIImage? {
-    
-    if let image = UIImage(data: data) {
-        return image
-    } else {
-        print("Failed to convert image from data.")
-        return nil
-    }
 }

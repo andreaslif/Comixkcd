@@ -30,6 +30,7 @@
 		E18A705626518C1F00C1F18C /* TestDataFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A705526518C1F00C1F18C /* TestDataFetching.swift */; };
 		E18A705C26518C6100C1F18C /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A705B26518C6100C1F18C /* MockURLSessionDataTask.swift */; };
 		E18A706426518C8E00C1F18C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A706326518C8E00C1F18C /* MockURLSession.swift */; };
+		E18A7073265292C100C1F18C /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A7072265292C100C1F18C /* Conversion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		E18A705526518C1F00C1F18C /* TestDataFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataFetching.swift; sourceTree = "<group>"; };
 		E18A705B26518C6100C1F18C /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		E18A706326518C8E00C1F18C /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		E18A7072265292C100C1F18C /* Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				E1135E31264C4C8100486E2D /* UI */,
 				E1135E58264C532E00486E2D /* Storage */,
 				E18A705A26518C3300C1F18C /* Mocking */,
+				E18A7071265292A700C1F18C /* Other */,
 				E1135DF6264C4A0500486E2D /* AppDelegate.swift */,
 				E1135DF8264C4A0500486E2D /* SceneDelegate.swift */,
 				E1135E02264C4A0700486E2D /* Assets.xcassets */,
@@ -235,6 +238,14 @@
 				E18A706326518C8E00C1F18C /* MockURLSession.swift */,
 			);
 			path = Mocking;
+			sourceTree = "<group>";
+		};
+		E18A7071265292A700C1F18C /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				E18A7072265292C100C1F18C /* Conversion.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +381,7 @@
 				E1135E54264C4D3E00486E2D /* Typography.swift in Sources */,
 				E1135E8F264F081200486E2D /* NavigationViewController.swift in Sources */,
 				E1135EB62651387500486E2D /* Config.swift in Sources */,
+				E18A7073265292C100C1F18C /* Conversion.swift in Sources */,
 				E1135DF7264C4A0500486E2D /* AppDelegate.swift in Sources */,
 				E18A706426518C8E00C1F18C /* MockURLSession.swift in Sources */,
 				E1135E4F264C4D1800486E2D /* ComicTableViewCell.swift in Sources */,

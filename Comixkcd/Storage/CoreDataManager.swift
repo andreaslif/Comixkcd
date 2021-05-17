@@ -26,6 +26,7 @@ class CoreDataManager: NSObject {
         static let title = "title"
         static let transcript = "transcript"
         static let imageData = "imageData"
+        static let imageUrl = "imageUrl"
         static let link = "link"
     }
     
@@ -50,6 +51,7 @@ class CoreDataManager: NSObject {
         entry.setValue(comicViewModel.number, forKeyPath: ComicKeys.number)
         entry.setValue(comicViewModel.title, forKeyPath: ComicKeys.title)
         entry.setValue(comicViewModel.transcript, forKeyPath: ComicKeys.transcript)
+        entry.setValue(comicViewModel.imageUrl, forKey: ComicKeys.imageUrl)
         
         if let imageData = comicViewModel.image?.pngData() {
             entry.setValue(imageData, forKeyPath: ComicKeys.imageData)

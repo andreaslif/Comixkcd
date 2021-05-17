@@ -32,9 +32,22 @@ class ComicViewController: UIViewController {
     
     // MARK: - Setup functions
     
+    /// Loads the image stored in the ComicViewModel if there is one (if it's been favourited), and if not attempts to download one from the imageUrl also stored in the ComicViewModel.
     private func setupComicImage() {
         
-        comicView.image = comicViewModel?.image
+        guard self.comicViewModel != nil else { return }
+        
+        if self.comicViewModel!.image != nil {
+            
+            self.comicView.image = self.comicViewModel!.image
+        } else {
+            
+            let image = imageFrom(imageUrlString: self.comicViewModel!.imageUrl)
+            self.comicView.image = image
+            
+            // Update the ComicViewModel, so that it gets saved in case the user favourites it.
+            self.comicViewModel?.image = image
+        }
     }
     
     private func setupCaption() {
@@ -87,7 +100,7 @@ class ComicViewController: UIViewController {
         }
         
         if CoreDataManager.shared.successfullySave(comicViewModel: self.comicViewModel!) {
-            if successfullyUpdateViewModelInParentViewController() {
+            if successfullyUpdateViewModelInComicsTableViewController() {
                 return true
             } else {
                 print("Failed to update ComicViewModel in ComicsTableViewController")
@@ -110,7 +123,7 @@ class ComicViewController: UIViewController {
     }
     
     /// Updates the corresponding ComicViewModel in ComicsTableViewController's array comicViewModels to reflect any changes made, e.g. when the favourite variable has been changed.
-    private func successfullyUpdateViewModelInParentViewController() -> Bool {
+    private func successfullyUpdateViewModelInComicsTableViewController() -> Bool {
 
         guard self.comicViewModel != nil else { return false }
         guard self.comicsTableViewController != nil else { return false }
