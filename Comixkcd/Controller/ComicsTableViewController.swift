@@ -11,6 +11,10 @@ class ComicsTableViewController: UITableViewController {
 
     // MARK: - Variables and constants
     
+    /// Returns true if a fetch process has already been started, false if not.
+    /// - Because fetching new comics is triggered by scrolling to the bottom, several requests could be triggered before one has finished. Keeping track of when a request has started allows us to block this.
+    var fetchInProgress = false
+    
     var comicViewModels = [ComicViewModel]()
     private var cellId = "ComicTableViewCell"
     private var segueId = "ComicIdentifier"
@@ -99,6 +103,8 @@ class ComicsTableViewController: UITableViewController {
     /// Fetches the latest comics, the number of which are specified under Config.
     private func fetchLatestComics() {
         
+        self.fetchInProgress = true
+        
         var latestComic: Int? = nil
         var latestComicViewModels = [ComicViewModel]()
         
@@ -127,7 +133,7 @@ class ComicsTableViewController: UITableViewController {
             let startIndex = latestComic! - Config.minimumNumberOfComics + 1
             guard startIndex >= 0 else { return }
             
-            var latestComicNumbers: [Int] = Array(startIndex...latestComic!)
+            var latestComicNumbers: [Int] = Array(startIndex..<latestComic!)
             latestComicNumbers = self.removeAlreadyLoadedComicNumbers(from: latestComicNumbers)
             
             for comicNumber in latestComicNumbers {
@@ -152,6 +158,58 @@ class ComicsTableViewController: UITableViewController {
                 self.updateTableViewWith(comicViewModels: latestComicViewModels)
             })
         })
+    }
+    
+    /// Fetches the the number of comics specified in Config.comicBatchSize and adds them to the table view.
+    private func fetchMoreComics() {
+        
+        if fetchInProgress == false {
+            
+            self.fetchInProgress = true
+            
+            var newComicViewModels = [ComicViewModel]()
+            
+            let lastNumber = lastComicNumber()
+            guard lastNumber != nil else { return }
+            
+            let startIndex = lastNumber! - Config.comicBatchSize + 1
+            guard startIndex > 0 else { return }
+            
+            let comicsToFetch: [Int] = Array(startIndex..<lastNumber!)
+            
+            let dispatchGroup = DispatchGroup()
+            
+            for comicNumber in comicsToFetch {
+                
+                dispatchGroup.enter()
+                
+                ComicService.shared.fetchComic(number: comicNumber, completionHandler: { comic, error in
+                    
+                    guard error == nil else { return }
+                    guard comic != nil else { return }
+                    
+                    let comicViewModel = ComicViewModel(comic: comic!)
+                    newComicViewModels.append(comicViewModel)
+                    
+                    dispatchGroup.leave()
+                })
+            }
+            
+            // Wait for all fetching to finish.
+            dispatchGroup.notify(queue: DispatchQueue.global(), execute: {
+                
+                self.updateTableViewWith(comicViewModels: newComicViewModels)
+            })
+        }
+    }
+    
+    /// Returns the number of the last (oldest fetched) ComicViewModel, or nil if one cannot be found.
+    private func lastComicNumber() -> Int? {
+        
+        let lastComicViewModel = self.comicViewModels.last
+        guard lastComicViewModel != nil else { return nil }
+        
+        return lastComicViewModel?.number
     }
     
     /// Takes the input array of Ints, which represent ComicViewModel number parameters, and removes any that are already in self.comicViewModels.
@@ -184,12 +242,21 @@ class ComicsTableViewController: UITableViewController {
         // Needs to run on main thread
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.fetchInProgress = false
         }
     }
     
-    /*
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // TODO: Use this to identify when we've reached the bottom, and use that as a trigger to load more comics.
-    }*/
+        
+        let tableViewHeight = self.tableView.frame.height
+        let contentHeight = self.tableView.contentSize.height
+        let scrollOffset = self.tableView.contentOffset.y
+        
+        // If reached bottom
+        if scrollOffset > contentHeight - tableViewHeight {
+            
+            fetchMoreComics()
+        }
+    }
     
 }

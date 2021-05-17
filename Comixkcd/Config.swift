@@ -12,6 +12,9 @@ class Config: NSObject {
     /// The minimum number of comics that should be loaded on the first screen, including favourites.
     static let minimumNumberOfComics: Int = 10
     
+    /// The number of comics to fetch each time the user e.g. scrolls to the bottom
+    static let comicBatchSize: Int = 5
+    
     // MARK: - Unit Tests
     
     /// Determines if we should test making a connection to the server or only test internally.
