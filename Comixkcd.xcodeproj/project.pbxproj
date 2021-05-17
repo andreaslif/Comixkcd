@@ -31,6 +31,7 @@
 		E18A705C26518C6100C1F18C /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A705B26518C6100C1F18C /* MockURLSessionDataTask.swift */; };
 		E18A706426518C8E00C1F18C /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A706326518C8E00C1F18C /* MockURLSession.swift */; };
 		E18A7073265292C100C1F18C /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18A7072265292C100C1F18C /* Conversion.swift */; };
+		E18A707826529DFF00C1F18C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E18A707726529DFF00C1F18C /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		E18A705B26518C6100C1F18C /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
 		E18A706326518C8E00C1F18C /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		E18A7072265292C100C1F18C /* Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversion.swift; sourceTree = "<group>"; };
+		E18A707726529DFF00C1F18C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		E1135DF5264C4A0500486E2D /* Comixkcd */ = {
 			isa = PBXGroup;
 			children = (
+				E18A707726529DFF00C1F18C /* README.md */,
 				E1135EB52651387500486E2D /* Config.swift */,
 				E1135DFC264C4A0500486E2D /* Main.storyboard */,
 				E1135E2C264C4C5000486E2D /* Model */,
@@ -353,6 +356,7 @@
 			files = (
 				E1135E06264C4A0700486E2D /* LaunchScreen.storyboard in Resources */,
 				E1135E03264C4A0700486E2D /* Assets.xcassets in Resources */,
+				E18A707826529DFF00C1F18C /* README.md in Resources */,
 				E1135DFE264C4A0500486E2D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

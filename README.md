@@ -12,3 +12,5 @@ Out of the all the desired features, I selected what I thought was most suitable
 - Share the comics
 
 I also thought it was important to keep track of which comics had been read and not, and decided to include this, even though it was not explicitly asked for.
+
+I went a bit over time because I had other obligations and couldn't work continuously every day.
